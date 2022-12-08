@@ -1,0 +1,39 @@
+[
+  {
+    "TeamName:": "Team Mysterio",
+    "Email": "mysterio.pupa@gmail.com",
+    "id": 1,
+    "TeamDetails":
+      {
+        "Teamof": 2,
+        "Member1":
+          {
+            "Name": "Vivek",
+            "PhoneNo.": 8618334821,
+            "Email": "vivekanandrk2001@gmail.com"
+          },
+        "Member2":
+          {
+            "Name": "Anup",
+            "PhoneNo.": 9740406789,
+            "Email": "anupkotur@gmail.com"
+          },
+        "Member3":
+          {
+            "Name": null,
+            "PhoneNo.": null,
+            "Email": null
+          },
+        "Member4":
+          {
+            "Name": null,
+            "PhoneNo.": null,
+            "Email": null
+          }
+      }
+  },
+  {
+    "TeamName:": "Expo",
+    "Email": "expo.pupa@gmail.com"
+  }
+]

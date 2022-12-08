@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "307636872848",
+    "project_id": "pupa-b980b",
+    "storage_bucket": "pupa-b980b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307636872848:android:8a1162af5e4402a6e15a15",
+        "android_client_info": {
+          "package_name": "com.pupa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307636872848-usrrvdlkks2elrfu8pkm00n0onanq8gt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pupa",
+            "certificate_hash": "abfdc2c2ce51eec2346def82bdc663d50cce5123"
+          }
+        },
+        {
+          "client_id": "307636872848-32rlu01vvghn97ed1pbj8gs0s683nglp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5zgjyG38d79A10LGZCXNaLb4DpAt31pA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307636872848-32rlu01vvghn97ed1pbj8gs0s683nglp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
