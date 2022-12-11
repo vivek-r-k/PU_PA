@@ -33,6 +33,36 @@ import { useOrientation, Orientation } from '../../useOrientation';
 import packageJson from '../../../package.json';
 import PupaCtie from '../../../navigation/PupaCtie';
 
+import Icons from 'react-native-vector-icons/MaterialIcons';
+
+// Countdown
+import { Box, Center, NativeBaseProvider } from 'native-base';
+import { CountdownCircleTimer } from 'react-native-countdown-circle-timer'
+const names = [
+  "Don't give up, slow progress is better than no progress; Stay Positive!",
+  "Stuck somewhere? Your mentors are always there to help you!",
+  "A true entrepreneur falls in love with the problem, not the solution",
+  "Entrepreneurs don’t finish when they are tired, they finish when they are done",
+  "Entrepreneurship is neither a science nor an art, it's a practice",
+  "You're the first to hear every time you state what you want or believe. It’s a message to you and others about what you think is possible. Don’t put a ceiling on yourself",
+  "“All our dreams can come true, if we have the courage to pursue them”—Walt Disney",
+  "“The secret of getting ahead is getting started.” —Mark Twain",
+  "“It’s hard to beat a person who never gives up.” —Babe Ruth",
+  "If people are doubting how far you can go, go so far that you can’t hear them anymore."
+]
+
+const renderTime = (time, dimension) => {
+  // https://codesandbox.io/s/musing-davinci-mqssz?fontsize=14&hidenavigation=1&theme=dark&file=/src/App.js
+  return (
+    <Text>
+      <Text style={{fontSize: 60}} >{dimension}</Text>
+      <Text style={{fontSize: 60}}>{'\n'}{time}</Text>
+    </Text>
+  );
+};
+const daySeconds = 86400;
+const getTimeDays = (time) => (time / daySeconds) | 0;
+
 declare const global: { HermesInternal: null | {} };
 
 // Silence an annoying warning about a harmless require cycle in React Native's
@@ -67,6 +97,28 @@ const VideoCall = () => {
     string | undefined
   >(undefined);
   const orientation = useOrientation();
+
+  // Countdown
+  const stratTime = Math.floor(new Date().getTime()/1000.0); // use UNIX timestamp in seconds
+  const endTime = 1673587210000/1000 // use UNIX timestamp in seconds
+  // ref: https://www.epochconverter.com/
+
+  const remainingTime = endTime - stratTime;
+  const days = Math.ceil(remainingTime / daySeconds);
+  const daysDuration = days * daySeconds;
+  // console.log(remainingTime);
+  
+  const [newName, setnewName] = useState("You're the first to hear every time you state what you want or believe. It’s a message to you and others about what you think is possible. Don’t put a ceiling on yourself");
+
+    const shuffle = useCallback(() => {
+        const index = Math.floor(Math.random() * names.length);
+        setnewName(names[index]);
+    }, []);
+
+    useEffect(() => {
+        const intervalID = setInterval(shuffle, 10000);
+        return () => clearInterval(intervalID);
+    }, [shuffle])
 
   /**
    * Uncomment to set up debugging globals.
@@ -258,6 +310,7 @@ const VideoCall = () => {
     <CallObjectContext.Provider value={callObject}>
       {/* <StatusBar barStyle="dark-content" /> */}
       <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View
           style={styles.container}
           {...robotID(
@@ -292,7 +345,7 @@ const VideoCall = () => {
             >
               
               <View style={styles.buttonContainer}>
-                <Text style={styles.bodyText}>
+                <Text style={{color: '#000000'}}>
                   To get started, enter an existing room URL or create a room
                 </Text>
                 <View
@@ -320,16 +373,14 @@ const VideoCall = () => {
                     <TouchableWithoutFeedback
                       onPress={() => setRoomUrlFieldValue(undefined)}
                     >
-                      <Image
-                        style={styles.closeIcon}
-                        source={require('../../../assets/close.png')}
-                      />
+                      {/* style={styles.closeIcon} */}
+                      <Icons name={"close"} size={40} color={"#000000"} />
                     </TouchableWithoutFeedback>
                   )}
                 </View>
                 {roomCreateError && (
                   <View style={styles.textRow}>
-                    <Image source={require('../../../assets/error.png')} />
+                      <Icons name={"error"} size={40} color={"#000000"} />
                     <Text style={styles.errorText}>
                       Oops! A room couldn't be created.
                     </Text>
@@ -358,7 +409,49 @@ const VideoCall = () => {
               </View>
             </ScrollView>
           )}
+                  {/* TODO: if possible add meeting scheduler */}
+                  {/* <Text 
+                  style={{textAlign: 'center',
+                  fontSize: 20,
+                  marginTop: 19,
+                  alignSelf: 'flex-start'
+                  }}
+                  >
+                  Meeting Scheduled</Text>
+                  <Ionicons name="calendar" style={{alignSelf: 'flex-start'}} /> */}
+                  {/* TODO: 
+                      1.Apply gradient to timer if possible which is available on npm website of this
+                        particular package
+                  */}
+                  <CountdownCircleTimer
+                    isPlaying
+                    rotation='counterclockwise'
+                    duration={daysDuration}
+                    colors={['#004777', '#F7B801', '#A30000', '#A30000']}
+                    colorsTime={[25, 20, 5, 3]}
+                    onComplete={() => {
+                      return alert("It's time to present") 
+                    }}
+                    // TODO: problem is with the initialRemainingTime
+                    // initialRemainingTime={remainingTime}
+                    size={300}
+                    style={{
+                      flex: 1,
+                    }}
+                  >
+                    {({ elapsedTime }) => (
+                      <Text style={{ color: '#FFC600', textAlign:'center' }}>
+                        {renderTime(getTimeDays(daysDuration - (elapsedTime))," Days ")}
+                      </Text>
+                    )}
+                  </CountdownCircleTimer>
+                  <Text
+                    style={{textAlign: 'center', marginTop: 10, color: '#05375a'}}
+                  >
+                    {newName}
+                  </Text>
         </View>
+        </ScrollView>
       </SafeAreaView>
     </CallObjectContext.Provider>
   );

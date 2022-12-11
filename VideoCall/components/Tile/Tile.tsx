@@ -13,6 +13,7 @@ import { DailyMediaView } from '@daily-co/react-native-daily-js';
 import theme from '../../theme';
 import { useOrientation, Orientation } from '../../useOrientation';
 import { robotID } from '../../utils';
+import Icons from 'react-native-vector-icons/MaterialIcons';
 
 export enum TileType {
   Thumbnail,
@@ -119,16 +120,12 @@ export default function Tile(props: Props) {
     return videoMuted || (audioMuted && !props.disableAudioIndicators) ? (
       <View style={styles.iconContainer}>
         {videoMuted && (
-          <Image
-            style={styles.icon}
-            source={require('../../../assets/camera-off.png')}
-          />
+          // style={styles.icon}
+          <Icons name={"video-off"} size={40} color={"#000000"} />
         )}
         {audioMuted && (
-          <Image
-            style={styles.icon}
-            source={require('../../../assets/mic-off.png')}
-          />
+          // style={styles.icon}
+          <Icons name={"mic-off"} size={40} color={"#000000"} />
         )}
       </View>
     ) : null;

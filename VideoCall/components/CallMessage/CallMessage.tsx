@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import theme from '../../theme';
+import Icons from 'react-native-vector-icons/MaterialIcons';
 
 type Props = {
   header: string;
@@ -13,7 +14,7 @@ export default function CallMessage(props: Props) {
     <View style={[styles.container, props.isError && styles.errorContainer]}>
       <View style={styles.textRow}>
         {props.isError && (
-          <Image source={require('../../../assets/error.png')} />
+          <Icons name={"error"} size={40} color={"#000000"} />
         )}
         <Text
           style={[

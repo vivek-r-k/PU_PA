@@ -20,7 +20,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const AppStack = () => {
     return(
-        <Tab.Navigator initialRouteName='Countdown' 
+        <Tab.Navigator initialRouteName='Main' 
         screenOptions = {
             ({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
@@ -38,9 +38,9 @@ const AppStack = () => {
                   else if (route.name === 'Schedule') {
                     iconName = focused ? 'videocam' : 'videocam-outline';
                   }
-                  else if (route.name === 'Countdown') {
-                    iconName = focused ? 'md-timer' : 'md-timer-outline';
-                  }
+                  // else if (route.name === 'Countdown') {
+                  //   iconName = focused ? 'md-timer' : 'md-timer-outline';
+                  // }
       
                   // You can return any component that you like here!
                   return <Ionicons name={iconName} size={size} color={color} />;
@@ -55,21 +55,21 @@ const AppStack = () => {
             name="Main" component={Main}
             />
             <Tab.Screen 
-            name="Team" component={Team}
+            name="Schedule" 
+            component={Schedule}
             />
             <Tab.Screen 
             name="Mentor" 
             component={Mentor}
             />
             <Tab.Screen 
-            name="Schedule" 
-            component={Schedule}
+            name="Team" component={Team}
             />
-            <Tab.Screen 
+            {/* <Tab.Screen 
             name="Countdown" component={Countdown} 
             // options={{
             //
-            />
+            /> */}
           </Tab.Navigator>
     )
 }

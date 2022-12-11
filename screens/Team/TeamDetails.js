@@ -115,7 +115,7 @@ const Team = ({navigation,route}) => {
             }}>
               <PupaCtie />
               <NativeBaseProvider>
-                    <Fab onPress={() => logout()} placement='top-right' shadow={2} size="sm" icon={<Icons name={"logout"} size={20} color={"#FFC600"} />} />
+                    <Fab onPress={() => logout()} placement='top-right' shadow={2} size="sm" icon={<Icons name={"logout"} size={20} color={"#000000"} />} />
                 <Stack space={2.5} alignSelf="center"  safeArea mt="4" width={80} >
                     <Box marginTop={10}>
                     
@@ -160,8 +160,8 @@ const Team = ({navigation,route}) => {
                         ) : (
                           <View style={{marginTop: 30}}>
                             <Text style={{alignSelf: 'center'}}>Select and upload Bill of Material</Text>
-                            <Button onPress={choosePhotoFromLibrary} marginBottom='1' marginTop={2}>Select BOM</Button>
-                            <Button onPress={uploadBom}>Upload</Button>
+                            <Button onPress={choosePhotoFromLibrary} marginBottom='1' marginTop={2} colorScheme='info' >Select BOM</Button>
+                            <Button onPress={uploadBom} colorScheme='info'>Upload</Button>
                           </View>
                         )
                       }

@@ -6,21 +6,10 @@ import {
   StyleSheet,
   useColorScheme,
   View,
-  Image
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import PupaCtie from '../../navigation/PupaCtie';
-import ForMentor from './EditMentor';
-import {Box, Stack, Text, NativeBaseProvider, Center} from 'native-base'
-import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Records from '../../assets/csvjson.json'
 import { AuthContext } from "../../navigation/AuthProvider";
 
 const Mentor = ({navigation,route}) => {
