@@ -390,7 +390,7 @@ const styles = StyleSheet.create({
   bodyText: {
     fontSize: theme.fontSize.base,
     marginBottom: 8,
-    fontFamily: theme.fontFamily.body,
+    color: "#000000"
   },
   startContainer: {
     flexDirection: 'column',
