@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useContext } from "react";
-import {Linking, TouchableOpacity} from 'react-native'
+import {Linking, TouchableOpacity, StyleSheet, View} from 'react-native'
 import { 
     Box, 
     Heading, 
@@ -14,14 +14,17 @@ import {
     Flex,
     Divider,
     TouchableHighlight,
-    Button
+    Button,
+    Fab
 } from "native-base";
+
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Cr from 'react-native-vector-icons/FontAwesome5';
 import YoutubePlayer from "react-native-youtube-iframe";
 import { AuthContext } from "../../navigation/AuthProvider";
 import Records from '../../assets/csvjson.json'
+import { position } from "native-base/lib/typescript/theme/styled-system";
 
 const ForMain = () => {
     ctieWeb = () => {
@@ -33,8 +36,8 @@ const ForMain = () => {
     ctieInsta = () => {
         Linking.openURL('https://www.instagram.com/KLETechbvb/')
     }
-    Ekletech = () => {
-        Linking.openURL('https://instagram.com/e_kletech?igshid=YmMyMTA2M2Y=')
+    MiB = () => {
+        Linking.openURL('https://instagram.com/makeinbvb?igshid=NTdlMDg3MTY=')
     }
     googleMap = () => {
         Linking.openURL('https://www.google.com/maps/place/KLE+Technological+University/@15.3688332,75.1213796,15z/data=!4m2!3m1!1s0x0:0xa247612556cc78b3?sa=X&ved=2ahUKEwjb_Ibm6Yr7AhVr6jgGHeWWCIsQ_BJ6BAhoEAU')
@@ -54,7 +57,9 @@ const ForMain = () => {
     }, []);
   return (
     <SafeAreaView>
+        
         <ScrollView>
+            <View style={{marginTop: -20}}>
             {
                 Records.map(record => {
                     if (record['Email']==user.email) {
@@ -65,8 +70,9 @@ const ForMain = () => {
                             size="2xl" 
                             textAlign={'center'}
                             key={record.id}
+                            fontSize='40'
                             >
-                                WELCOME {record['TeamName:']}
+                                WELCOME {"\n"} {record['TeamName:']}
                         </Heading>
                       )
                     }
@@ -78,7 +84,7 @@ const ForMain = () => {
                 textAlign={'center'}
                 >
                     Reach out to the cocoon of entrepreneur in you and get ready to flourish and fly
-            </Text>
+            </Text>       
 
             {/* PUPA */}
             <Box alignItems="center" marginTop={22}>
@@ -118,7 +124,7 @@ const ForMain = () => {
             textAlign={'center'}
             marginTop={28}
             marginBottom={-5}
-            fontSize={20}
+            fontSize={35}
             
             >PUPA 2019</Text>
             <ScrollView horizontal marginBottom={5}>
@@ -301,6 +307,14 @@ const ForMain = () => {
                 videoId={"BKSTMeIhiyw"}
                 onChangeState={onStateChange}
             />
+
+            <Text
+            bold
+            textAlign={'center'}
+            marginTop={-10}
+            marginBottom={-5}
+            fontSize={35}
+            >About Us</Text>
                 {/* About Ctie */}
             <Box alignItems="center" marginTop={22}>
                 <Box maxW="80" rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
@@ -331,15 +345,15 @@ const ForMain = () => {
                     </Text>
                     
                     <HStack marginTop={-2} alignItems="center" space={2} justifyContent="center">
-                        <Icon.Button name={'web-box'} backgroundColor="#FFC600" onPress={this.ctieWeb} color={"#171F1D"}>
+                        <Icon.Button name={'web-box'} backgroundColor="#CAD5E2" onPress={this.ctieWeb} color={"#171F1D"}>
                             <Text style={{ fontFamily: 'Arial', fontSize: 15 }}>Visit</Text>
                         </Icon.Button>
                             <Divider orientation="vertical" />
-                        <Icon.Button name={'linkedin'} backgroundColor="#FFC600" onPress={this.ctieLink} color={"#171F1D"}>
+                        <Icon.Button name={'linkedin'} backgroundColor="#CAD5E2" onPress={this.ctieLink} color={"#171F1D"}>
                             <Text style={{ fontFamily: 'Arial', fontSize: 15 }}>Connect</Text>
                         </Icon.Button>
                             <Divider orientation="vertical" />
-                        <Icon.Button name={'instagram'} backgroundColor="#FFC600" onPress={this.ctieInsta} color={"#171F1D"} >
+                        <Icon.Button name={'instagram'} backgroundColor="#CAD5E2" onPress={this.ctieInsta} color={"#171F1D"} >
                             <Text style={{ fontFamily: 'Arial', fontSize: 15 }}>Explore</Text>
                         </Icon.Button>
                     </HStack>
@@ -367,32 +381,31 @@ const ForMain = () => {
                     <Stack p="4" space={3}>
                     <Stack space={2}>
                         <Heading size="md" ml="-1" textAlign={'center'} >
-                        E-KLETECH 
+                        Make in BVB 
                         </Heading>
                     </Stack>
-                        <Text marginTop={-4} textAlign={'center'}>(formerly known as Make in BVB)</Text>
                     <Text fontWeight="400" textAlign={'center'}>
-                    E-KLE Tech (formerly known as Make in BVB) is a student body organization under KLE CTIE. 
+                    Make in BVB(MiB) is a student body organization under KLE CTIE. 
                     The club aims to inculcate skills like leadership, communication and entrepreneurship in students 
                     by conducting seminars, activities and events. 
                     </Text>
                     
                     <HStack marginTop={-2} alignItems="center" space={4} justifyContent="center">
-                        <Icon.Button name={'instagram'} backgroundColor="#FFC600" onPress={this.Ekletech} color={"#171F1D"} >
+                        <Icon.Button name={'instagram'} backgroundColor="#CAD5E2" onPress={this.MiB} color={"#171F1D"} >
                             <Text style={{ fontFamily: 'Arial', fontSize: 15 }}>Explore</Text>
                         </Icon.Button>                    
                     </HStack>
                     </Stack>
                 </Box>
             </Box>
-            <Box alignItems="center" marginTop={22}>
+            <Box alignItems="center" marginTop={-3}>
                 {/* TODO: Add map link of our college */}
                 <Text
                    bold
                    textAlign={'center'}
                    marginTop={28}
                    marginBottom={-5}
-                   fontSize={20}
+                   fontSize={35}
                 >Location</Text>         
                 <Box alignItems="center" marginTop={22}>
                     <Box maxW="80" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
@@ -420,6 +433,7 @@ const ForMain = () => {
                 <Text style={{ fontFamily: 'Arial', fontSize: 10 }}> All rights reserved</Text>
                 </Cr>
             </Box>
+            </View>
         </ScrollView>
     </SafeAreaView>
     );

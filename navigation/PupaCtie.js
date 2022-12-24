@@ -8,15 +8,15 @@ import {
 const PupaCtie = () => {
     return(
         <View style={styles.container}>
-        <Image
-            style={styles.pupa}
-            source={require('../assets/Pupalogo.png')} 
-            
-        /> 
-        <Image 
-            style={styles.ctie}
-            source={require('../assets/klectie.png')}
-        />
+            <Image
+                style={styles.pupa}
+                source={require('../assets/LOGO1.png')} 
+                
+            /> 
+            {/* <Image 
+                style={styles.ctie}
+                source={require('../assets/Ctie&MiB.png')}
+            /> */}
         </View>
     )
 }
@@ -28,12 +28,12 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     pupa: {
-        width:220,
-        height:90,
+        width:208,
+        height:101,
     },
     ctie: {
-        width:150,
-        height:40,
+        width:206,
+        height:62,
     }
 })
 

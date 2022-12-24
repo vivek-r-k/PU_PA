@@ -9,7 +9,7 @@ import {
   View,
   Image
 } from 'react-native';
-
+import {Fab, NativeBaseProvider} from 'native-base'
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
@@ -17,6 +17,8 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PupaCtie from '../../navigation/PupaCtie';
 import ForMain from './ForMain';
+import LinearGradient from 'react-native-linear-gradient';
+
 const Stack = createNativeStackNavigator();
 
 const Home = ({navigation,route}) => {
@@ -33,6 +35,15 @@ const Home = ({navigation,route}) => {
         // barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         // backgroundColor={backgroundStyle.backgroundColor}
       />
+      {/* <LinearGradient colors={['#feeba3','#FFC600','#FFC600','#FFC600']}> */}
+      {/* <NativeBaseProvider>
+      <View>    
+            <Fab placement='top-right' shadow={2} size="md" label={<Text color="white" fontSize="sm" >
+                                                                    210{"\n"} registrations
+                                                                  </Text>} 
+            />
+      </View>
+      </NativeBaseProvider> */}
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         // style={backgroundStyle}
@@ -46,8 +57,8 @@ const Home = ({navigation,route}) => {
             <ForMain />
         </View>
       </ScrollView>
+      {/* </LinearGradient> */}
     </SafeAreaView>
-            
     );
   };
   

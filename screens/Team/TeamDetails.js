@@ -9,8 +9,11 @@ import {
   Image,
   TouchableOpacity,
   Alert,
-  ActivityIndicator
+  ActivityIndicator,
+  Button,
 } from 'react-native';
+
+import {Heading} from 'native-base'
 
 import {
   Colors,
@@ -21,7 +24,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import PupaCtie from '../../navigation/PupaCtie';
 import EditTeam from './EditTeam';
-import {FormControl, Input, Fab, NativeBaseProvider, Stack, Box, Button, Text} from 'native-base'
+import {FormControl, Input, Fab, NativeBaseProvider, Stack, Box, Text} from 'native-base'
 import { AuthContext } from '../../navigation/AuthProvider';
 import ImagePicker from 'react-native-image-crop-picker';
 import storage from '@react-native-firebase/storage';
@@ -110,12 +113,12 @@ const Team = ({navigation,route}) => {
           >
           <View
             style={{
-              // backgroundColor: isDarkMode ? Colors.black : Colors.white,
+              // backgroundColor: "#242B2E",
               flex: 1, justifyContent: 'center', alignItems: 'center' 
             }}>
               <PupaCtie />
-              <NativeBaseProvider>
-                    <Fab onPress={() => logout()} placement='top-right' shadow={2} size="sm" icon={<Icons name={"logout"} size={20} color={"#000000"} />} />
+              <NativeBaseProvider>                    
+              <Fab color="#242B2E" marginX={-5} marginY={-2} onPress={() => logout()} placement='top-right' shadow={8} size='50' icon={<Icons name={"logout"} size={20} color={"#000000"} />} />
                 <Stack space={2.5} alignSelf="center"  safeArea mt="4" width={80} >
                     <Box marginTop={10}>
                     
@@ -125,28 +128,37 @@ const Team = ({navigation,route}) => {
                           
                               return(
                                 // TODO: update the correct id in json file
+                                <View>
+                                    <Text
+                                      bold
+                                      textAlign={'center'}
+                                      marginTop={-12}
+                                      // marginBottom={-5}
+                                      fontSize={35}
+                                    >Team Details</Text>
                                 <Box key={record.id}>
                                   <Box>
-                                      <Text fontSize={25} bold >{record.TeamDetails.Member1.Name}</Text>
-                                      <Text fontSize={20}>{record.TeamDetails.Member1['PhoneNo.']}</Text>
-                                      <Text fontSize={20}>{record.TeamDetails.Member1.Email}</Text>
+                                      <Text fontSize={25} bold selectable>{record.TeamDetails.Member1.Name}</Text>
+                                      <Text fontSize={20} selectable>{record.TeamDetails.Member1['PhoneNo.']}</Text>
+                                      <Text fontSize={20} selectable>{record.TeamDetails.Member1.Email}</Text>
                                   </Box>
                                   <Box marginTop={4}>
-                                      <Text fontSize={25} bold >{record.TeamDetails.Member2.Name}</Text>
-                                      <Text fontSize={20}>{record.TeamDetails.Member2['PhoneNo.']}</Text>
-                                      <Text fontSize={20}>{record.TeamDetails.Member2.Email}</Text>
+                                      <Text fontSize={25} bold selectable>{record.TeamDetails.Member2.Name}</Text>
+                                      <Text fontSize={20} selectable>{record.TeamDetails.Member2['PhoneNo.']}</Text>
+                                      <Text fontSize={20} selectable>{record.TeamDetails.Member2.Email}</Text>
                                   </Box>
                                   <Box marginTop={4}>
-                                      <Text fontSize={25} bold >{record.TeamDetails.Member3.Name}</Text>
-                                      <Text fontSize={20}>{record.TeamDetails.Member3['PhoneNo.']}</Text>
-                                      <Text fontSize={20}>{record.TeamDetails.Member3.Email}</Text>
+                                      <Text fontSize={25} bold selectable>{record.TeamDetails.Member3.Name}</Text>
+                                      <Text fontSize={20} selectable>{record.TeamDetails.Member3['PhoneNo.']}</Text>
+                                      <Text fontSize={20} selectable>{record.TeamDetails.Member3.Email}</Text>
                                   </Box>
                                   <Box marginTop={4}>
-                                      <Text fontSize={25} bold >{record.TeamDetails.Member4.Name}</Text>
-                                      <Text fontSize={20}>{record.TeamDetails.Member4['PhoneNo.']}</Text>
-                                      <Text fontSize={20}>{record.TeamDetails.Member4.Email}</Text>
+                                      <Text fontSize={25} bold selectable>{record.TeamDetails.Member4.Name}</Text>
+                                      <Text fontSize={20} selectable>{record.TeamDetails.Member4['PhoneNo.']}</Text>
+                                      <Text fontSize={20} selectable>{record.TeamDetails.Member4.Email}</Text>
                                   </Box>
                                 </Box>
+                                </View>
                               )
                             }
                           })
@@ -159,9 +171,9 @@ const Team = ({navigation,route}) => {
                           </View>
                         ) : (
                           <View style={{marginTop: 30}}>
-                            <Text style={{alignSelf: 'center'}}>Select and upload Bill of Material</Text>
-                            <Button onPress={choosePhotoFromLibrary} marginBottom='1' marginTop={2} colorScheme='info' >Select BOM</Button>
-                            <Button onPress={uploadBom} colorScheme='info'>Upload</Button>
+                            <Text style={{alignSelf: 'center'}} fontSize="20">Select and upload Bill of Material</Text>
+                            <TouchableOpacity style={{shadowRadius: 10, marginBottom: 5}}><Button onPress={choosePhotoFromLibrary} title="Select BOM" color="#242B2E" /></TouchableOpacity>
+                            <TouchableOpacity style={{shadowRadius: 10, marginBottom: 5}}><Button onPress={uploadBom} title="Upload" color="#242B2E"/></TouchableOpacity>
                           </View>
                         )
                       }

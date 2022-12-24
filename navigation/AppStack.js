@@ -20,7 +20,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const AppStack = () => {
     return(
-        <Tab.Navigator initialRouteName='Main' 
+        <Tab.Navigator initialRouteName='Mentor' 
         screenOptions = {
             ({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {

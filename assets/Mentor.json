@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "Email": "mysterio.pupa@gmail.com",
+    "MentorDetails":
+      {
+        "Name": "Vivek",
+        "Linkedin":"https://www.linkedin.com/in/vivekanand-r-k/",
+        "Insta": "https://www.instagram.com/_vivek_r_k",
+        "PhoneNo.": 8618334821,
+        "Email": "vivekanandrk2001@gmail.com",
+        "Avatar": "assets/messi.jpeg"
+      }
+  },
+  {
+    "TeamName:": "Expo",
+    "Email": "expo.pupa@gmail.com"
+  }
+]
